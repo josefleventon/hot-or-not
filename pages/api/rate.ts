@@ -9,8 +9,6 @@ export default async function handler(
   if (req.method === 'POST') {
     const { code, winning_idea, losing_idea } = req.body
 
-    console.log(req.body)
-
     if (!code || !winning_idea || !losing_idea) {
       return res.status(400).json({ error: 'Invalid input data.' })
     }
@@ -51,19 +49,13 @@ export default async function handler(
 
       const losingElo = parseInt(losingEloResult.rows[0].elo)
 
-      console.log(winningElo, losingElo)
-
       // Calculate the new elo
       const elo = new EloRank(15)
       const expectedWinningElo = elo.getExpected(winningElo, losingElo)
       const expectedLosingElo = elo.getExpected(losingElo, winningElo)
 
-      console.log(expectedWinningElo, expectedLosingElo)
-
       const newWinningElo = elo.updateRating(expectedWinningElo, 1, winningElo)
       const newLosingElo = elo.updateRating(expectedLosingElo, 0, losingElo)
-
-      console.log(newWinningElo, newLosingElo)
 
       // Update the elo of the winning idea
       const updateEloQuery = `

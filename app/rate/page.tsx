@@ -27,8 +27,6 @@ export default function Rate() {
       const { data: res } = await axios.get('/api/ideas')
       const ideas = res.ideas
 
-      console.log('Fetched ideas', ideas[0], ideas[1])
-
       setIdeas(ideas)
       setIsLoading(false)
     } catch (e) {
