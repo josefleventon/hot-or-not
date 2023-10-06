@@ -2,7 +2,7 @@
 
 import { useAtom } from 'jotai'
 import { useCallback, useState } from 'react'
-import { codeAtom, usesAtom } from '@/atoms'
+import { codeAtom } from '@/atoms'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
