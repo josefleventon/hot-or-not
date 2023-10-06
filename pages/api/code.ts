@@ -36,7 +36,7 @@ export default async function handler(
         return res.status(404).json({ error: 'Code not found.' })
       }
 
-      const timesUsed = result.rows[0].times_used
+      const timesUsed = parseInt(result.rows[0].times_used)
 
       client.release()
 

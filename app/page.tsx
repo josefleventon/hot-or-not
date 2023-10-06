@@ -20,6 +20,10 @@ export default function EnterCode() {
       })
       if (status !== 200) alert('Invalid access code!')
 
+      if (res.times_used >= 3) {
+        return alert('This code has already been used.')
+      }
+
       setCode(codeData)
       setUses(res.times_used)
 
