@@ -30,7 +30,7 @@ export default function EnterCode() {
   }, [router, codeData, setCode, setUses])
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <main className="flex mx-4 md:mx-0 min-h-screen flex-col items-center justify-center">
       <div>
         <label
           htmlFor="code"
@@ -43,7 +43,7 @@ export default function EnterCode() {
             type="text"
             name="code"
             id="code"
-            className="peer block w-full mx-4 md:mx-0 md:w-64 mt-2 border-0 bg-zinc-800 py-3.5 text-white focus:ring-0 sm:leading-6"
+            className="peer block w-full md:w-64 mt-2 border-0 bg-zinc-800 py-3.5 text-white focus:ring-0 sm:leading-6"
             onChange={(e) => setCodeData(e.currentTarget.value.toUpperCase())}
             value={codeData}
             maxLength={5}
@@ -52,7 +52,7 @@ export default function EnterCode() {
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-blue-600 hover:bg-blue-800 w-full mx-4 md:mx-0 md:w-64 inline-flex justify-center items-center text-white py-2.5 mt-2"
+          className="bg-blue-600 hover:bg-blue-800 w-full md:w-64 inline-flex justify-center items-center text-white py-2.5 mt-2"
         >
           Start rating!
         </button>
