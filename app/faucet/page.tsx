@@ -1,26 +1,19 @@
 'use client'
 
-import { useAtom } from 'jotai'
 import { useCallback, useState } from 'react'
-import { codeAtom } from '@/atoms'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
 export default function Faucet() {
-  const [code] = useAtom(codeAtom)
   const [address, setAddress] = useState<string>('')
 
   const router = useRouter()
 
   const handleSubmit = useCallback(async () => {
     if (!address) return
-    if (!code) {
-      alert('No access code found, redirecting to home page...')
-      router.push('/')
-    }
-    await axios.post('/api/faucet', { address, code })
-    router.push('/success')
-  }, [code, address, router])
+    await axios.post('/api/faucet', { address })
+    router.push('https://wagemos.com')
+  }, [address, router])
 
   return (
     <main className="flex min-h-screen mx-4 md:mx-0 flex-col items-center justify-center">
@@ -31,11 +24,6 @@ export default function Faucet() {
         >
           Enter your Neutron address to receive your $HACKMOS airdrop
         </label>
-        <p className="block text-base mt-2 text-white/75">
-          Once the betting platform is live, you will be able to use your
-          $HACKMOS tokens to bet on your favorite team. IF you get it right,
-          you&apos;ll receive free ATOM!
-        </p>
         <div className="relative mt-4">
           <input
             type="text"
